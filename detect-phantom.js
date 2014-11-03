@@ -73,5 +73,5 @@ page.open(url, function (status) {
     }
 });
 
-phantom.onError = null;
-page.onError = null;
+phantom.onError = console.error;
+page.onError = console.error;

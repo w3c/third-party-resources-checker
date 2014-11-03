@@ -19,6 +19,10 @@ var tests = [
     {"desc": "find one non-w3.org resource loaded via external CSS",
      "input": "external.html",
      "output": ["http://example.org/"]
+    },
+    {"desc": "find one non-w3.org resource loaded after a failing script",
+     "input": "js-error.html",
+     "output": ["http://example.org/"]
     }
 
 ];
