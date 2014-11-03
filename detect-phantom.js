@@ -5,8 +5,12 @@ var page = require('webpage').create()
 ,	url = system.args[1]
 ;
 
+console.error = function () {
+    require("system").stderr.write(Array.prototype.join.call(arguments, ' ') + '\n');
+};
+
 if (url === undefined) {
-    console.log('Missing URL as argument');
+    console.error('Missing URL as argument');
     phantom.exit(1);
 }
 
@@ -14,7 +18,7 @@ var whitelisted_domains = ["www.w3.org"];
 
 var scheme = urllib.parse(url).protocol;
 if (scheme !== 'http:' && scheme !== 'https:') {
-    console.log('not allowed to load ' + url);
+    console.error('not allowed to load ' + url);
     phantom.exit(1);
 }
 
@@ -58,7 +62,7 @@ page.onResourceRequested = function(requestData, networkRequest) {
 
 page.open(url, function (status) {
     if (status !== 'success') {
-        console.log('fail to load ' + url);
+        console.error('fail to load ' + url);
         phantom.exit(1);
     } else {
         if (!found) {
