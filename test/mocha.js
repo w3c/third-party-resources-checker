@@ -15,6 +15,10 @@ var tests = [
     {"desc": "find one non-w3.org resource loaded via CSS",
      "input": "css.html",
      "output": ["http://example.org/"]
+    },
+    {"desc": "find one non-w3.org resource loaded via external CSS",
+     "input": "external.html",
+     "output": ["http://example.org/"]
     }
 
 ];
