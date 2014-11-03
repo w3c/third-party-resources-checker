@@ -5,6 +5,8 @@ var page = require('webpage').create()
 ,	url = system.args[1]
 ;
 
+var whitelisted_domains = ["www.w3.org"];
+
 var scheme = urllib.parse(url).protocol;
 if (scheme !== 'http:' && scheme !== 'https:') {
     console.log('not allowed to load ' + url);
@@ -23,18 +25,28 @@ page.onResourceRequested = function(requestData, networkRequest) {
         if (progress === 2) {
             page.evaluate(function() {
                 var b = document.createElement("base");
-                b.setAttribute("href", "http://staging.w3.org/");
+                b.setAttribute("href", "http://staging/");
                 document.getElementsByTagName("head")[0].appendChild(b);
             });
         }
         var parsedUrl = urllib.parse(requestData.url);
-        if (parsedUrl.hostname === 'staging.w3.org') {
+        if (parsedUrl.hostname === 'staging') {
             networkRequest.changeUrl(urllib.resolve(url, parsedUrl.path));
         }
         var domain = urllib.parse(requestData.url).hostname;
-        if (!domain.match(/w3\.org$/)) {
+        if (whitelisted_domains.indexOf(domain) === -1 && domain !== "staging") {
             found = true;
             console.log(requestData.url);
+            // let's save ourselves unnecessary efforts when testing
+            if (domain === "example.org") {
+                networkRequest.abort();
+            }
+        } else {
+            // we assume resources on whitelisted domains have already been vetted
+            // and don't need to be checked for third-party resources
+            if (domain !== "staging") {
+                networkRequest.abort();
+            }
         }
     }
 };
