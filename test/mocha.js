@@ -25,6 +25,14 @@ describe('Starting test suite', function() {
         server.close();
     });
 
+    it("should fail to load a file", function (done) {
+        var phantom = spawn('phantomjs', ['detect-phantom.js', 'file:///etc/passwd']);
+        phantom.on('close', function(code) {
+            expect(code).to.eql(1);
+            done();
+        });
+    });
+
     tests.forEach(function(test) {
         it("should " + test.desc, function(done) {
             var phantom = spawn('phantomjs', ['detect-phantom.js', 'http://localhost:3001/' + test.input]);

@@ -4,6 +4,12 @@ var page = require('webpage').create()
 ,	url = system.args[1]
 ;
 
+var scheme = urlparse('protocol', url);
+if (scheme !== 'http' && scheme !== 'https') {
+    console.log('not allowed to load ' + url);
+    phantom.exit(1);
+}
+
 var first = true;
 var found = false;
 
@@ -22,7 +28,7 @@ page.onResourceRequested = function(requestData) {
 
 page.open(system.args[1], function (status) {
     if (status !== 'success') {
-        console.log('fail to load ' +system.args[1]);
+        console.log('fail to load ' + url);
         phantom.exit(1);
     } else {
         if (!found) {
