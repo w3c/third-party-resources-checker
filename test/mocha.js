@@ -32,10 +32,15 @@ describe('Starting test suite', function() {
             phantom.stdout.on('data', function (data) {
                 buffer += data;
             });
-            phantom.on('close', function() {
+            phantom.on('close', function(code) {
                 var consoleout = buffer.split("\n");
                 consoleout.pop();
                 expect(consoleout).to.eql(test.output);
+                if (consoleout.length > 0) {
+                    expect(code).to.eql(64);
+                } else {
+                    expect(code).to.eql(0);
+                }
                 done();
             });
         });
