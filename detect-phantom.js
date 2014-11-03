@@ -66,11 +66,17 @@ var urlparse = (function() {
     };
 })();
 
+var first = true;
+
 //this function is loaded each time a resource is requested
 page.onResourceRequested = function(requestData) {
-    var domain = urlparse('domain', requestData.url);
-    if (domain !== 'w3.org') {
-        console.log(requestData.url);
+    if (first) {
+        first = false;
+    } else {
+        var domain = urlparse('domain', requestData.url);
+        if (domain !== 'w3.org') {
+            console.log(requestData.url);
+        }
     }
 };
 
