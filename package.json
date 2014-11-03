@@ -12,7 +12,7 @@
        "expect.js": "0.3.1"
     },
     "scripts": {
-       "start": "phantomjs detect-phantom.js",
+       "start": "phantomjs --ssl-protocol=tlsv1 detect-phantom.js",
        "test": "mocha"
     }
 }

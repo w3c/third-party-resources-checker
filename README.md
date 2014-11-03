@@ -4,5 +4,5 @@ It is meant to become a component of a new streamlined W3C publication workflow.
 
 # Running
 ```shell
-phantomjs detect-phantom.js http://example.org/page/to/be/checked
+phantomjs --ssl-protocol=tlsv1 detect-phantom.js http://example.org/page/to/be/checked
 ```
