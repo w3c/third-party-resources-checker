@@ -63,3 +63,6 @@ page.open(system.args[1], function (status) {
         }
     }
 });
+
+phantom.onError = null;
+page.onError = null;
