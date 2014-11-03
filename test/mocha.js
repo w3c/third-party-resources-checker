@@ -11,7 +11,12 @@ var tests = [
     {"desc": "find one non-w3.org resource loaded via XHR",
      "input": "xhr.html",
      "output": ["http://example.org/"]
+    },
+    {"desc": "find one non-w3.org resource loaded via CSS",
+     "input": "css.html",
+     "output": ["http://example.org/"]
     }
+
 ];
 
 describe('Starting test suite', function() {
