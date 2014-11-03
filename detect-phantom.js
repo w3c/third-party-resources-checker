@@ -5,6 +5,11 @@ var page = require('webpage').create()
 ,	url = system.args[1]
 ;
 
+if (url === undefined) {
+    console.log('Missing URL as argument');
+    phantom.exit(1);
+}
+
 var whitelisted_domains = ["www.w3.org"];
 
 var scheme = urllib.parse(url).protocol;
@@ -51,7 +56,7 @@ page.onResourceRequested = function(requestData, networkRequest) {
     }
 };
 
-page.open(system.args[1], function (status) {
+page.open(url, function (status) {
     if (status !== 'success') {
         console.log('fail to load ' + url);
         phantom.exit(1);
