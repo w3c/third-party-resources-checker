@@ -1,7 +1,6 @@
 var page = require('webpage').create()
 ,	system = require('system')
 ,       urllib = require('./node_modules/url/url.js')
-,       querystring = require('./node_modules/querystring/index.js')
 ,	url = system.args[1]
 ;
 
