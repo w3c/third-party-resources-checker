@@ -1,7 +1,9 @@
 var page = require('webpage').create()
+,       fs = require('fs')
 ,	system = require('system')
 ,       urllib = require('./node_modules/url/url.js')
 ,	url = system.args[1]
+,       whitelist_source = system.args[2]
 ;
 
 console.error = function () {
@@ -11,6 +13,12 @@ console.error = function () {
 if (url === undefined) {
     console.error('Missing URL as argument');
     phantom.exit(1);
+}
+
+var whitelisted_urls = [];
+if (whitelist_source) {
+  var whitelist_content = fs.read(whitelist_source);
+  whitelisted_urls = whitelist_content.split("\n");
 }
 
 var whitelisted_domains = ["www.w3.org"];
@@ -37,6 +45,10 @@ page.onResourceRequested = function(requestData, networkRequest) {
                 document.getElementsByTagName("head")[0].appendChild(b);
             });
         }
+        if (whitelisted_urls.indexOf(requestData.url) !== -1) {
+            networkRequest.abort();
+            return;
+        }
         var parsedUrl = urllib.parse(requestData.url);
         if (parsedUrl.hostname === 'staging') {
             networkRequest.changeUrl(urllib.resolve(url, parsedUrl.path));
@@ -46,7 +58,7 @@ page.onResourceRequested = function(requestData, networkRequest) {
             found = true;
             console.log(requestData.url);
             // let's save ourselves unnecessary efforts when testing
-            if (domain === "example.org") {
+            if (domain === "example.org" || domain === "example.com") {
                 networkRequest.abort();
             }
         } else {

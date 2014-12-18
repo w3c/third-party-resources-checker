@@ -27,7 +27,13 @@ var tests = [
     {"desc": "find one non-w3.org resource loaded after a failing script",
      "input": "js-error.html",
      "output": ["http://example.org/"]
+    },
+    {"desc": "ignores whitelisted 3rd party url",
+     "whitelist": "test/whitelist.txt",
+     "input": "one-nonw3org.html",
+     "output": []
     }
+
 
 ];
 
@@ -52,7 +58,11 @@ describe('Starting test suite', function() {
 
     tests.forEach(function(test) {
         it("should " + test.desc, function(done) {
-            var phantom = spawn('phantomjs', ['detect-phantom.js', 'http://localhost:3001/' + test.input]);
+            var args  = ['detect-phantom.js', 'http://localhost:3001/' + test.input];
+            if (test.whitelist) {
+                args.push(test.whitelist);
+            }
+            var phantom = spawn('phantomjs', args);
             var buffer = "";
             phantom.stdout.on('data', function (data) {
                 buffer += data;
