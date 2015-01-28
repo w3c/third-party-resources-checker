@@ -13,10 +13,10 @@
     "devDependencies": {
         "mocha": "1.20.1",
         "express": "4.4.1",
-       "expect.js": "0.3.1"
+        "expect.js": "0.3.1"
     },
     "scripts": {
-       "start": "phantomjs --ssl-protocol=tlsv1 detect-phantom.js",
-       "test": "mocha"
+        "start": "phantomjs --ssl-protocol=tlsv1 detect-phantom.js",
+        "test": "mocha"
     }
 }
