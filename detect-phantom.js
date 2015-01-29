@@ -1,7 +1,7 @@
 var page = require('webpage').create()
 ,       fs = require('fs')
 ,	system = require('system')
-,       urllib = require('./node_modules/url/url.js')
+,       urllib = require('url')
 ,	url = system.args[1]
 ,       whitelist_source = system.args[2]
 ;
