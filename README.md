@@ -14,5 +14,12 @@ Then, on the command line, run:
 
 ```shell
 phantomjs --ssl-protocol=tlsv1 detect-phantom.js http://example.org/page/to/be/checked [whitelist.txt]
-  whitelist.txt is an optional file containing URIs (one per line) that are deemed OK
 ```
+
+or via npm:
+
+```shell
+npm start http://example.org/page/to/be/checked [whitelist.txt]
+```
+
+`whitelist.txt` is an optional file containing URIs (one per line) that are deemed OK.

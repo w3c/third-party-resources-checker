@@ -1,4 +1,5 @@
 var spawn = require('child_process').spawn;
+var phantomjs = require('phantomjs').path;
 var expect = require("expect.js");
 var tests = [
     {"desc" : "find no non-w3.org resources",
@@ -49,7 +50,7 @@ describe('Starting test suite', function() {
     });
 
     it("should fail to load a file", function (done) {
-        var phantom = spawn('phantomjs', ['detect-phantom.js', 'file:///etc/passwd']);
+        var phantom = spawn(phantomjs, ['detect-phantom.js', 'file:///etc/passwd']);
         phantom.on('close', function(code) {
             expect(code).to.eql(1);
             done();
@@ -62,7 +63,7 @@ describe('Starting test suite', function() {
             if (test.whitelist) {
                 args.push(test.whitelist);
             }
-            var phantom = spawn('phantomjs', args);
+            var phantom = spawn(phantomjs, args);
             var buffer = "";
             phantom.stdout.on('data', function (data) {
                 buffer += data;
