@@ -21,7 +21,7 @@ if (whitelist_source) {
         var whitelist_content = fs.read(whitelist_source);
         whitelisted_urls = whitelist_content.split("\n");
     } else {
-        console.log("The whitelist file doesn't exist");
+        console.error("The whitelist file doesn't exist");
     }
 }
 
