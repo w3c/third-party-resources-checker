@@ -17,6 +17,9 @@
         "express": "4.4.1",
         "expect.js": "0.3.1"
     },
+    "bin": {
+        "third-party-resources-checker": "./bin/third-party-resources-checker"
+    },
     "scripts": {
         "test": "mocha"
     }

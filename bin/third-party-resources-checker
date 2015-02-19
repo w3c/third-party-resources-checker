@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
+'use strict';
+
 var fs = require('fs');
 var phantomPath = require('phantomjs').path || '/usr/local/bin/phantomjs';
 var program = require('commander');
 var spawn = require('child_process').spawn;
 
 program
-    .version(JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf8')).version)
+    .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
     .usage('[options] URI')
     .option('-w, --whitelist <filename>', 'optional file containing URIs (one per line) that are deemed OK');
 
@@ -22,7 +24,7 @@ program.parse(process.argv);
 
 if (!program.args.length) program.help();
 
-var script = fs.realpathSync(__dirname + '/detect-phantom.js');
+var script = fs.realpathSync(__dirname + '/../lib/detect-phantom.js');
 var uri = program.args[0];
 var whitelist = program.whitelist ? program.whitelist : '';
 
