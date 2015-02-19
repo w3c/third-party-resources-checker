@@ -1,4 +1,6 @@
 var spawn = require('child_process').spawn;
+var binPath = './bin/third-party-resources-checker';
+var check = require('../lib/third-party-resources-checker').check;
 var expect = require("expect.js");
 var tests = [
     {"desc" : "find no non-w3.org resources",
@@ -33,8 +35,6 @@ var tests = [
      "input": "one-nonw3org.html",
      "output": []
     }
-
-
 ];
 
 describe('Starting test suite', function() {
@@ -48,33 +48,53 @@ describe('Starting test suite', function() {
         server.close();
     });
 
-    it("should fail to load a file", function (done) {
-        var phantom = spawn('phantomjs', ['detect-phantom.js', 'file:///etc/passwd']);
-        phantom.on('close', function(code) {
-            expect(code).to.eql(1);
+    it("should librarily fail to load a file", function (done) {
+        check('file:///etc/passwd').then(function (result) {
+            expect(result[0]).to.equal(1);
+        }).done(done);
+    });
+
+    tests.forEach(function(test) {
+        it("should librarily " + test.desc, function(done) {
+            check('http://localhost:3001/' + test.input, test.whitelist)
+                .then(function (result) {
+                    expect(result[1]).to.eql(test.output);
+                    if (result[1].length > 0) {
+                        expect(result[0]).to.equal(64);
+                    } else {
+                        expect(result[0]).to.equal(0);
+                    }
+                }).done(done);
+        });
+    });
+
+    it("should standalonely fail to load a file", function (done) {
+        var program = spawn(binPath, ['file:///etc/passwd']);
+        program.on('close', function(code) {
+            expect(code).to.equal(1);
             done();
         });
     });
 
     tests.forEach(function(test) {
-        it("should " + test.desc, function(done) {
-            var args  = ['detect-phantom.js', 'http://localhost:3001/' + test.input];
+        it("should standalonely " + test.desc, function(done) {
+            var args = ['http://localhost:3001/' + test.input];
             if (test.whitelist) {
-                args.push(test.whitelist);
+                args.push('-w', test.whitelist);
             }
-            var phantom = spawn('phantomjs', args);
+            var program = spawn(binPath, args);
             var buffer = "";
-            phantom.stdout.on('data', function (data) {
+            program.stdout.on('data', function (data) {
                 buffer += data;
             });
-            phantom.on('close', function(code) {
+            program.on('close', function(code) {
                 var consoleout = buffer.split("\n");
                 consoleout.pop();
                 expect(consoleout).to.eql(test.output);
                 if (consoleout.length > 0) {
-                    expect(code).to.eql(64);
+                    expect(code).to.equal(64);
                 } else {
-                    expect(code).to.eql(0);
+                    expect(code).to.equal(0);
                 }
                 done();
             });

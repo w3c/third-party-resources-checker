@@ -2,17 +2,27 @@
     "name": "third-party-resources-checker",
     "version": "0.0.1",
     "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/dontcallmedom/third-party-resources-checker"
+    },
     "dependencies": {
-        "url":"0.10.1",
-        "querystring":"0.2.0"
+        "commander": "~2.0.0",
+        "phantomjs": "~1.9.15",
+        "promise": "~6.1.0",
+        "querystring": "~0.2.0",
+        "url": "~0.10.1"
     },
     "devDependencies": {
         "mocha": "1.20.1",
         "express": "4.4.1",
-       "expect.js": "0.3.1"
+        "expect.js": "0.3.1"
+    },
+    "main": "./lib/third-party-resources-checker.js",
+    "bin": {
+        "third-party-resources-checker": "./bin/third-party-resources-checker"
     },
     "scripts": {
-       "start": "phantomjs --ssl-protocol=tlsv1 detect-phantom.js",
-       "test": "mocha"
+        "test": "mocha"
     }
 }
