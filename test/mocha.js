@@ -1,5 +1,6 @@
 var spawn = require('child_process').spawn;
 var binPath = './bin/third-party-resources-checker';
+var check = require('../lib/third-party-resources-checker').check;
 var expect = require("expect.js");
 var tests = [
     {"desc" : "find no non-w3.org resources",
@@ -45,6 +46,26 @@ describe('Starting test suite', function() {
 
     after(function() {
         server.close();
+    });
+
+    it("should librarily fail to load a file", function (done) {
+        check('file:///etc/passwd').then(function (result) {
+            expect(result[0]).to.equal(1);
+        }).done(done);
+    });
+
+    tests.forEach(function(test) {
+        it("should librarily " + test.desc, function(done) {
+            check('http://localhost:3001/' + test.input, test.whitelist)
+                .then(function (result) {
+                    expect(result[1]).to.eql(test.output);
+                    if (result[1].length > 0) {
+                        expect(result[0]).to.equal(64);
+                    } else {
+                        expect(result[0]).to.equal(0);
+                    }
+                }).done(done);
+        });
     });
 
     it("should standalonely fail to load a file", function (done) {
