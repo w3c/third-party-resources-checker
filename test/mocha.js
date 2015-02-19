@@ -1,5 +1,5 @@
 var spawn = require('child_process').spawn;
-var phantomjs = require('phantomjs').path;
+var script = './third-party-resources-checker';
 var expect = require("expect.js");
 var tests = [
     {"desc" : "find no non-w3.org resources",
@@ -50,7 +50,7 @@ describe('Starting test suite', function() {
     });
 
     it("should fail to load a file", function (done) {
-        var phantom = spawn(phantomjs, ['detect-phantom.js', 'file:///etc/passwd']);
+        var phantom = spawn(script, ['file:///etc/passwd']);
         phantom.on('close', function(code) {
             expect(code).to.eql(1);
             done();
@@ -59,11 +59,11 @@ describe('Starting test suite', function() {
 
     tests.forEach(function(test) {
         it("should " + test.desc, function(done) {
-            var args  = ['detect-phantom.js', 'http://localhost:3001/' + test.input];
+            var args = ['http://localhost:3001/' + test.input];
             if (test.whitelist) {
-                args.push(test.whitelist);
+                args.push('-w', test.whitelist);
             }
-            var phantom = spawn(phantomjs, args);
+            var phantom = spawn(script, args);
             var buffer = "";
             phantom.stdout.on('data', function (data) {
                 buffer += data;
