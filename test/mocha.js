@@ -34,8 +34,6 @@ var tests = [
      "input": "one-nonw3org.html",
      "output": []
     }
-
-
 ];
 
 describe('Starting test suite', function() {
@@ -52,7 +50,7 @@ describe('Starting test suite', function() {
     it("should fail to load a file", function (done) {
         var phantom = spawn(script, ['file:///etc/passwd']);
         phantom.on('close', function(code) {
-            expect(code).to.eql(1);
+            expect(code).to.equal(1);
             done();
         });
     });
@@ -73,9 +71,9 @@ describe('Starting test suite', function() {
                 consoleout.pop();
                 expect(consoleout).to.eql(test.output);
                 if (consoleout.length > 0) {
-                    expect(code).to.eql(64);
+                    expect(code).to.equal(64);
                 } else {
-                    expect(code).to.eql(0);
+                    expect(code).to.equal(0);
                 }
                 done();
             });

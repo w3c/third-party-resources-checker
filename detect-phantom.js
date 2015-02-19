@@ -81,7 +81,7 @@ page.open(url, function (status) {
         phantom.exit(1);
     } else {
         if (!found) {
-  	    phantom.exit(0);
+            phantom.exit(0);
         } else {
             phantom.exit(64);
         }
