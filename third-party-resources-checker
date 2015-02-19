@@ -1,0 +1,38 @@
+#!/usr/bin/env node
+
+var fs = require('fs');
+var phantomPath = require('phantomjs').path || '/usr/local/bin/phantomjs';
+var program = require('commander');
+var spawn = require('child_process').spawn;
+
+program
+    .version(JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf8')).version)
+    .usage('[options] URI')
+    .option('-w, --whitelist <filename>', 'optional file containing URIs (one per line) that are deemed OK');
+
+program.on('--help', function() {
+    console.log('  Examples:');
+    console.log();
+    console.log('    $ third-party-resources-checker http://page.to.be/checked');
+    console.log('    $ third-party-resources-checker -w whitelist.txt http://page.to.be/checked');
+    console.log();
+  });
+
+program.parse(process.argv);
+
+if (!program.args.length) program.help();
+
+var script   = fs.realpathSync(__dirname + '/detect-phantom.js');
+var uri = program.args[0];
+var whitelist = program.whitelist ? program.whitelist : '';
+
+var phantomjs = spawn(phantomPath, [script, uri, whitelist]);
+
+phantomjs.stdout.pipe(process.stdout);
+phantomjs.stderr.pipe(process.stderr);
+phantomjs.on('exit', function(code){ process.exit(code); });
+
+phantomjs.on('error', function(e) {
+    console.error('An error occurred trying to launch phantomjs at "' + phantomPath + '": ' + e);
+    process.exit(-1);
+});

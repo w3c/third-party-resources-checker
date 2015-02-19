@@ -2,24 +2,22 @@ This phantomjs-based tool loads a Web-page and logs on the standard output any U
 
 It is meant to become a component of a new streamlined W3C publication workflow.
 
-# Running
+## Usage
 
-Start by installing the dependencies:
-
-```shell
-npm install
-```
-
-Then, on the command line, run:
+After installing the dependencies with `npm install`, run the checker via the command line:
 
 ```shell
-phantomjs --ssl-protocol=tlsv1 detect-phantom.js http://example.org/page/to/be/checked [whitelist.txt]
+  Usage: third-party-resources-checker [options] URI
+
+  Options:
+
+    -h, --help                  output usage information
+    -V, --version               output the version number
+    -w, --whitelist <filename>  optional file containing URIs (one per line) that are deemed OK
+
+  Examples:
+
+    $ third-party-resources-checker http://page.to.be/checked
+    $ third-party-resources-checker -w whitelist.txt http://page.to.be/checked
+
 ```
-
-or via npm:
-
-```shell
-npm start http://example.org/page/to/be/checked [whitelist.txt]
-```
-
-`whitelist.txt` is an optional file containing URIs (one per line) that are deemed OK.
