@@ -21,13 +21,25 @@ The checker can be run standalone via the command line:
 
     -h, --help                  output usage information
     -V, --version               output the version number
-    -w, --whitelist <filename>  optional file containing URIs (one per line) that are deemed OK
+    -w, --whitelist <filename>  optional JSON file containing URIs and domains that are deemed OK
 
   Examples:
 
     $ third-party-resources-checker http://page.to.be/checked
-    $ third-party-resources-checker -w whitelist.txt http://page.to.be/checked
+    $ third-party-resources-checker -w whitelist.json http://page.to.be/checked
 
+```
+
+Sample whitelist file:
+```
+{
+    "domains": [
+        "www.foobar.org"
+    ],
+    "urls": [
+        "http://example.org/image.jpg"
+    ]
+}
 ```
 
 ### As a module
