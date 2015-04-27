@@ -31,8 +31,13 @@ var tests = [
      "output": ["http://example.org/"]
     },
     {"desc": "ignores whitelisted 3rd party url",
-     "whitelist": "test/whitelist.txt",
+     "whitelist": "test/whitelist.json",
      "input": "one-nonw3org.html",
+     "output": []
+    },
+    {"desc": "ignores 3rd party resources under whitelisted domains",
+     "whitelist": "test/whitelist.json",
+     "input": "one-nonw3org-logo.html",
      "output": []
     }
 ];

@@ -1,0 +1,8 @@
+{
+    "domains": [
+        "www.foobar.org"
+    ],
+    "urls": [
+        "http://example.org/"
+    ]
+}
