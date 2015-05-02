@@ -26,6 +26,14 @@ var tests = [
      "input": "external.html",
      "output": ["http://example.org/"]
     },
+    {"desc": "work fine when relative is first and doc in a folder",
+     "input": "folder",
+     "output": ["http://example.org/"]
+    },
+    {"desc": "work fine when relative is first and doc in a folder with trailing slash",
+     "input": "folder/",
+     "output": ["http://example.org/"]
+    },
     {"desc": "find one non-w3.org resource loaded after a failing script",
      "input": "js-error.html",
      "output": ["http://example.org/"]
