@@ -14,6 +14,7 @@
         "url": "~0.10.1"
     },
     "devDependencies": {
+        "coveralls": "^2.11.2",
         "expect.js": "0.3.1",
         "express": "4.4.1",
         "istanbul": "^0.3.13",
@@ -25,6 +26,7 @@
     },
     "scripts": {
         "coverage": "istanbul cover _mocha",
+        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
         "test": "mocha"
     }
 }
