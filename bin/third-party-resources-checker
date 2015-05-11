@@ -10,7 +10,7 @@ var spawn = require('child_process').spawn;
 program
     .version(JSON.parse(fs.readFileSync(__dirname + '/../package.json', 'utf8')).version)
     .usage('[options] URI')
-    .option('-w, --whitelist <filename>', 'optional file containing URIs (one per line) that are deemed OK');
+    .option('-w, --whitelist <filename>', 'optional JSON file containing URIs and domains that are deemed OK');
 
 program.on('--help', function() {
     console.log('  Examples:');
