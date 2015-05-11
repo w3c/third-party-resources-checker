@@ -14,15 +14,17 @@
         "url": "~0.10.1"
     },
     "devDependencies": {
-        "mocha": "1.20.1",
+        "expect.js": "0.3.1",
         "express": "4.4.1",
-        "expect.js": "0.3.1"
+        "istanbul": "^0.3.13",
+        "mocha": "1.20.1"
     },
     "main": "./lib/third-party-resources-checker.js",
     "bin": {
         "third-party-resources-checker": "./bin/third-party-resources-checker"
     },
     "scripts": {
+        "coverage": "istanbul cover _mocha",
         "test": "mocha"
     }
 }
