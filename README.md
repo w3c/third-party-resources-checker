@@ -31,18 +31,6 @@ The checker can be run standalone via the command line:
 
 ```
 
-Sample whitelist file:
-```
-{
-    "domains": [
-        "www.foobar.org"
-    ],
-    "urls": [
-        "http://example.org/image.jpg"
-    ]
-}
-```
-
 ### As a module
 
 The checker can also be run as a module. `require('third-party-resources-checker')` exposes a single `check` function:
@@ -55,3 +43,19 @@ It returns a `Promise` of a tuple (as a JavaScript `Array`):
 
 - The first element is the exit code
 - The second element is an `Array` of `String`, each of them being an external resource
+
+
+### Whitelist format
+
+When used standalone, the whitelist must be written in a [JSON file](https://en.wikipedia.org/wiki/JSON). When used as a module, it must be given to the `check()` function as a [JavaScript object literal](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Grammar_and_types#Object_literals). In both cases, its format is the following:
+
+```
+{
+    "domains": [
+        "www.foobar.org"
+    ],
+    "urls": [
+        "http://example.org/image.jpg"
+    ]
+}
+```
