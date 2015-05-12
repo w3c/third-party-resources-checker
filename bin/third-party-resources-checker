@@ -16,7 +16,7 @@ program.on('--help', function() {
     console.log('  Examples:');
     console.log();
     console.log('    $ third-party-resources-checker http://page.to.be/checked');
-    console.log('    $ third-party-resources-checker -w whitelist.txt http://page.to.be/checked');
+    console.log('    $ third-party-resources-checker -w whitelist.json http://page.to.be/checked');
     console.log();
   });
 
