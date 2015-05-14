@@ -7,18 +7,18 @@
         "url": "https://github.com/dontcallmedom/third-party-resources-checker"
     },
     "dependencies": {
-        "commander": "~2.0.0",
-        "phantomjs": "~1.9.15",
-        "promise": "~6.1.0",
-        "querystring": "~0.2.0",
-        "url": "~0.10.1"
+        "commander": "^2.8.1",
+        "phantomjs": "^1.9.15",
+        "promise": "^7.0.1",
+        "querystring": "^0.2.0",
+        "url": "^0.10.1"
     },
     "devDependencies": {
         "coveralls": "^2.11.2",
-        "expect.js": "0.3.1",
-        "express": "4.4.1",
+        "expect.js": "^0.3.1",
+        "express": "^4.12.3",
         "istanbul": "^0.3.13",
-        "mocha": "1.20.1"
+        "mocha": "^2.2.4"
     },
     "main": "./lib/third-party-resources-checker.js",
     "bin": {

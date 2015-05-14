@@ -1,5 +1,7 @@
 [![Build Status](https://travis-ci.org/w3c/third-party-resources-checker.svg?branch=master)](https://travis-ci.org/w3c/third-party-resources-checker)
 [![Coverage Status](https://coveralls.io/repos/w3c/third-party-resources-checker/badge.svg)](https://coveralls.io/r/w3c/third-party-resources-checker)
+[![Dependency Status](https://david-dm.org/w3c/third-party-resources-checker.svg)](https://david-dm.org/w3c/third-party-resources-checker)
+[![devDependency Status](https://david-dm.org/w3c/third-party-resources-checker/dev-status.svg)](https://david-dm.org/w3c/third-party-resources-checker#info=devDependencies)
 
 This phantomjs-based tool loads a Web-page and logs on the standard output any URL (one per line) the page requests while loading that is not a `www.w3.org` URL (as defined in the `whitelisted_domains` variable).
 
