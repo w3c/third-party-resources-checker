@@ -1,6 +1,7 @@
 {
   "name": "third-party-resources-checker",
   "version": "1.0.1",
+  "description": "The Third Party Resources Checker is a tool to detect non-w3.org and non-whitelisted resources in a Web page.",
   "license": "MIT",
   "repository": {
     "type": "git",
