@@ -1,32 +1,32 @@
 {
-    "name": "third-party-resources-checker",
-    "version": "0.0.1",
-    "license": "MIT",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/dontcallmedom/third-party-resources-checker"
-    },
-    "dependencies": {
-        "commander": "^2.8.1",
-        "phantomjs": "^1.9.15",
-        "promise": "^7.0.1",
-        "querystring": "^0.2.0",
-        "url": "^0.10.1"
-    },
-    "devDependencies": {
-        "coveralls": "^2.11.2",
-        "expect.js": "^0.3.1",
-        "express": "^4.12.3",
-        "istanbul": "^0.3.13",
-        "mocha": "^2.2.4"
-    },
-    "main": "./lib/third-party-resources-checker.js",
-    "bin": {
-        "third-party-resources-checker": "./bin/third-party-resources-checker"
-    },
-    "scripts": {
-        "coverage": "istanbul cover _mocha",
-        "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
-        "test": "mocha"
-    }
+  "name": "third-party-resources-checker",
+  "version": "1.0.0",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dontcallmedom/third-party-resources-checker"
+  },
+  "dependencies": {
+    "commander": "^2.8.1",
+    "phantomjs": "^1.9.15",
+    "promise": "^7.0.1",
+    "querystring": "^0.2.0",
+    "url": "^0.10.1"
+  },
+  "devDependencies": {
+    "coveralls": "^2.11.2",
+    "expect.js": "^0.3.1",
+    "express": "^4.12.3",
+    "istanbul": "^0.3.13",
+    "mocha": "^2.2.4"
+  },
+  "main": "./lib/third-party-resources-checker.js",
+  "bin": {
+    "third-party-resources-checker": "./bin/third-party-resources-checker"
+  },
+  "scripts": {
+    "coverage": "istanbul cover _mocha",
+    "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
+    "test": "mocha"
+  }
 }
