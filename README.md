@@ -1,3 +1,5 @@
+[![npm version](https://img.shields.io/npm/v/third-party-resources-checker.svg)](https://npmjs.org/package/third-party-resources-checker)
+[![License](https://img.shields.io/npm/l/third-party-resources-checker.svg)](LICENSE)
 [![Build Status](https://travis-ci.org/w3c/third-party-resources-checker.svg?branch=master)](https://travis-ci.org/w3c/third-party-resources-checker)
 [![Coverage Status](https://coveralls.io/repos/w3c/third-party-resources-checker/badge.svg)](https://coveralls.io/r/w3c/third-party-resources-checker)
 [![Dependency Status](https://david-dm.org/w3c/third-party-resources-checker.svg)](https://david-dm.org/w3c/third-party-resources-checker)
