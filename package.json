@@ -5,7 +5,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/dontcallmedom/third-party-resources-checker"
+    "url": "https://github.com/w3c/third-party-resources-checker.git"
   },
   "dependencies": {
     "commander": "^2.8.1",
