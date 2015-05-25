@@ -7,6 +7,9 @@
     "type": "git",
     "url": "https://github.com/w3c/third-party-resources-checker.git"
   },
+  "bugs": {
+    "url": "https://github.com/w3c/third-party-resources-checker/issues"
+  },
   "dependencies": {
     "commander": "^2.8.1",
     "phantomjs": "^1.9.15",
