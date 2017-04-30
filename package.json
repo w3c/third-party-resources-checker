@@ -11,18 +11,18 @@
     "url": "https://github.com/w3c/third-party-resources-checker/issues"
   },
   "dependencies": {
-    "commander": "^2.8.1",
-    "phantomjs-prebuilt": "2.1.8",
-    "promise": "^7.0.1",
+    "commander": "^2.9.0",
+    "phantomjs-prebuilt": "^2.1.14",
+    "promise": "^7.1.1",
     "querystring": "^0.2.0",
     "url": "^0.11.0"
   },
   "devDependencies": {
-    "coveralls": "^2.11.2",
+    "coveralls": "^2.13.1",
     "expect.js": "^0.3.1",
-    "express": "^4.12.3",
-    "istanbul": "^0.4.1",
-    "mocha": "^2.2.4"
+    "express": "^4.15.2",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.3.0"
   },
   "main": "./lib/third-party-resources-checker.js",
   "bin": {
