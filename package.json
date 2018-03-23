@@ -32,5 +32,10 @@
     "coverage": "istanbul cover _mocha",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "test": "mocha -c -G"
+  },
+  "engines": {
+    "node": "6 || 8",
+    "npm": ">=3"
   }
+
 }
