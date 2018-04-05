@@ -12,7 +12,7 @@
   },
   "dependencies": {
     "commander": "2.9.0",
-    "phantomjs-prebuilt": "2.1.14",
+    "phantomjs-prebuilt": "2.1.16",
     "promise": "7.1.1",
     "querystring": "0.2.0",
     "url": "0.11.0"
@@ -32,5 +32,9 @@
     "coverage": "istanbul cover _mocha",
     "coveralls": "npm run coverage && cat ./coverage/lcov.info | coveralls",
     "test": "mocha -c -G"
+  },
+  "engines": {
+    "node": "6 || 8",
+    "npm": ">=3"
   }
 }
